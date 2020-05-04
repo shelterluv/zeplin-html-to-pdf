@@ -7,6 +7,7 @@ module.exports = {
       "capitalized-comments": "error",
       "arrow-body-style": ["error", "as-needed"],
       "no-process-env": "off",
-      "no-undef": "off"
+      "no-undef": "off",
+      "no-continue": "off"
   }
 };
