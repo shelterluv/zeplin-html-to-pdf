@@ -11,8 +11,8 @@
     "lint:staged": "./node_modules/.bin/eslint --quiet",
     "lint:fix": "npm run lint -- --fix",
     "pack": "rm -f package.zip && zip package.zip -r index.js utils lib fonts",
-    "deploy:dev": "npm run pack && aws lambda update-function-code --region us-west-2 --function-name devZepHtmlToPdf --zip-file fileb://`pwd`/package.zip",
-    "deploy:prod": "npm run pack && aws lambda update-function-code --region us-west-2 --function-name prodZephtmlToPdf --zip-file fileb://`pwd`/package.zip"
+    "deploy:dev": "npm run pack && aws lambda update-function-code --region us-west-2 --function-name devZepHtmlToPdf --zip-file fileb://`pwd`/package.zip --cli-connect-timeout 6000 --debug",
+    "deploy:prod": "npm run pack && aws lambda update-function-code --region us-west-2 --function-name prodZephtmlToPdf --zip-file fileb://`pwd`/package.zip --cli-connect-timeout 6000"
   },
   "repository": {
     "type": "git",
