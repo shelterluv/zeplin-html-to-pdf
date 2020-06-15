@@ -1,14 +1,18 @@
 {
-  "name": "zeplin-html-to-pdf",
+  "name": "sl-zeplin-html-to-pdf",
   "version": "2.0.0",
-  "description": "AWS Lambda function that converts HTML pages to PDF documents",
+  "description": "AWS Lambda function that converts HTML pages on S3 to PDF documents",
+  "engines": {
+    "node": "~12.16.0",
+    "npm": "~6.13.0"
+  },
   "scripts": {
     "lint": "./node_modules/.bin/eslint --quiet .",
     "lint:staged": "./node_modules/.bin/eslint --quiet",
     "lint:fix": "npm run lint -- --fix",
     "pack": "rm -f package.zip && zip package.zip -r index.js utils lib fonts",
-    "deploy:dev": "npm run pack && aws lambda update-function-code --region us-west-1 --function-name htmlToPdf --zip-file fileb://`pwd`/package.zip",
-    "deploy:prod": "npm run pack && aws lambda update-function-code --region us-west-2 --function-name htmlToPdf --zip-file fileb://`pwd`/package.zip"
+    "deploy:dev": "npm run pack && aws lambda update-function-code --region us-west-2 --function-name devZepHtmlToPdf --zip-file fileb://`pwd`/package.zip --cli-connect-timeout 6000 --debug",
+    "deploy:prod": "npm run pack && aws lambda update-function-code --region us-west-2 --function-name prodZepHtmlToPdf --zip-file fileb://`pwd`/package.zip --cli-connect-timeout 6000"
   },
   "repository": {
     "type": "git",
@@ -21,7 +25,8 @@
     "@zeplin/eslint-config": "^2.0.0",
     "eslint": "^4.0.0",
     "husky": "^4.2.1",
-    "lint-staged": "^10.0.2"
+    "lint-staged": "^10.0.2",
+    "aws-sdk": "^2.206.0"
   },
   "husky": {
     "hooks": {
